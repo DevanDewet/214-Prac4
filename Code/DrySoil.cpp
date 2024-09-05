@@ -1,19 +1,21 @@
 #include "DrySoil.h"
+#include "CropField.h"
+#include "FruitfulSoil.h"
 
-void DrySoil::harvestCrops()
-{
-	// TODO - implement DrySoil::harvestCrops
-	throw "Not yet implemented";
+void DrySoil::harvestCrops(CropField* field) {
+
+    int yield = field->getYield();  // Assume getYield() gets the current yield
+    field->setYield(yield);  // Adjust yield
+    std::cout << "Harvesting crops from DrySoil.\n";
 }
 
-void DrySoil::rain()
-{
-	// TODO - implement DrySoil::rain
-	throw "Not yet implemented";
+void DrySoil::rain(CropField* field) {
+ 
+    field->setState(new FruitfulSoil());  
+	 delete this;
+    std::cout << "Rain has turned the soil to Fruitful.\n";
 }
 
-std::string DrySoil::getName()
-{
-	// TODO - implement DrySoil::getName
-	throw "Not yet implemented";
+std::string DrySoil::getName() {
+    return "Dry";
 }

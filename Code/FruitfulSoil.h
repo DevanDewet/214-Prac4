@@ -1,20 +1,14 @@
 #ifndef FRUITFULSOIL_H
 #define FRUITFULSOIL_H
 
-
 #include <string>
 #include "State.h"
 
-class FruitfulSoil : State
-{
-
-
+class FruitfulSoil : public State {
 public:
-	void harvestCrops();
-
-	void rain();
-
-	std::string getName();
+    void harvestCrops(CropField* field) override;
+    void rain(CropField* field) override;
+    std::string getName() override;
 };
 
 #endif

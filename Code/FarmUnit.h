@@ -10,8 +10,8 @@ class FarmUnit
 
 public:
 
- 	virtual void buyTruck() = 0;
-    virtual void sellTruck() = 0;
+ 	virtual void buyTruck() ;
+    virtual void sellTruck() ;
     virtual int getTotalCapacity() = 0;
     virtual std::string getCropType() = 0;
     virtual std::string getSoilTypeName() = 0;

@@ -1,67 +1,77 @@
 #include "CropField.h"
-#include "DepthFirstFarmIterator.h"
-#include "BreadthFirstFarmIterator.h"
 
-
+// Getters
 int CropField::getTotalCapacity() 
 {
-	return totalCapacity;
+    return totalCapacity;
 }
 
 std::string CropField::getCropType() 
 {
-	return cropType;
+    return cropType;
 }
 
 std::string CropField::getSoilTypeName() 
 {
-	return soilState;
+    return soilState->getName();  
 }
 
-void CropField::increaseProduction()  
+void CropField::increaseProduction() 
 {
-	if (soilState == "Dry") 
-		{
-				soilState = "Fruitful";  
-				std::cout << "Fertilizer applied. Soil state changed to Fruitful.\n";
-		} 
-		else 
-		{
-            std::cout << "Soil state is already fruitful or flooded, cannot apply fertilizer.\n";
-        }
+
+
+    std::cout << "Increasing production based on soil state: " << soilState->getName() << "\n";
 }
 
-void CropField::harvest()
+void CropField::harvest() 
 {
-	if (soilState == "Fruitful") 
-	{
-        int harvestedAmount = 3;  
-        currentStoredCrops += harvestedAmount;
-        std::cout << harvestedAmount << " crops harvested from " << cropType << ".\n";
-    } 
-	else if (soilState == "Dry") 
-	{
-        int harvestedAmount = 1;
-        currentStoredCrops += harvestedAmount;
-        std::cout << harvestedAmount << " crops harvested from " << cropType << ".\n";
-    } 
-	else if (soilState == "Flooded") 
-	{
-        std::cout << "Field is flooded. No crops can be harvested.\n";
-    }
+     soilState->harvestCrops(this);  
+	
+	 currentStoredCrops += yield;
 }
 
-int CropField::getLeftoverCapacity()
+int CropField::getLeftoverCapacity() 
 {
-	return totalCapacity - currentStoredCrops;
+
+    return totalCapacity - currentStoredCrops;
 }
 
-DepthFirstFarmIterator* CropField::CreateDepthFirstFarmIterator()
+
+void CropField::setState(State* state) 
 {
-	return new DepthFirstFarmIterator(); // just put this here to get erros away 
+   delete soilState;
+    soilState = state;
 }
 
-BreadthFirstFarmIterator* CropField::CreateBreadthFirstFarmIterator()
+
+void CropField::rain() 
 {
-	 return new BreadthFirstFarmIterator(); // just put this here to get erros away
+    soilState->rain(this); 
+}
+
+std::string CropField::getSoilStateName() 
+{
+    return soilState->getName(); 
+}
+
+int CropField::getYield() 
+{
+    return yield; 
+}
+
+void CropField::setYield(int yield) 
+{
+     yield = yield;
+}
+
+DepthFirstFarmIterator* CropField::CreateDepthFirstFarmIterator() 
+{
+    // Implement as needed
+    return nullptr;
+}
+
+BreadthFirstFarmIterator* CropField::CreateBreadthFirstFarmIterator() 
+{
+    // Implement as needed
+    return nullptr;
 }

@@ -1,19 +1,18 @@
 #ifndef DRYSOIL_H
 #define DRYSOIL_H
 
-#include <string> 
+#include <string>
 #include "State.h"
 
-class DrySoil : State
-{
+// Forward declaration of CropField class
+class CropField;
 
-
+class DrySoil : public State {
 public:
-	void harvestCrops();
-
-	void rain();
-
-	std::string getName();
+    
+    void harvestCrops(CropField* field) override;
+    void rain(CropField* field) override;
+    std::string getName() override;
 };
 
 #endif

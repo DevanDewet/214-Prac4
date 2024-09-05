@@ -1,19 +1,22 @@
 #include "FruitfulSoil.h"
+#include "CropField.h" // To access CropField methods if needed
 
-void FruitfulSoil::harvestCrops()
+void FruitfulSoil::harvestCrops(CropField* field) 
 {
-	// TODO - implement FruitfulSoil::harvestCrops
-	throw "Not yet implemented";
+
+    int currentYield = field->getYield();
+    field->setYield(currentYield * 3);
+
+	std::cout << "Harvesting crops from Fruitful.\n";
 }
 
-void FruitfulSoil::rain()
+void FruitfulSoil::rain(CropField* field) 
 {
-	// TODO - implement FruitfulSoil::rain
-	throw "Not yet implemented";
+ std::cout << "It is raining. Soil is already fruitful, no change in state." << std::endl;
 }
 
-std::string FruitfulSoil::getName()
+
+std::string FruitfulSoil::getName() 
 {
-	// TODO - implement FruitfulSoil::getName
-	throw "Not yet implemented";
+    return "Fruitful";
 }

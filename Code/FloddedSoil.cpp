@@ -1,19 +1,14 @@
 #include "FloddedSoil.h"
+#include "CropField.h"
 
-void FloddedSoil::harvestCrops()
-{
-	// TODO - implement FloddedSoil::harvestCrops
-	throw "Not yet implemented";
+void FloodedSoil::harvestCrops(CropField* field) {
+ std::cout << "Attempting to harvest crops in flooded soil. No crops can be harvested." << std::endl;
 }
 
-void FloddedSoil::rain()
-{
-	// TODO - implement FloddedSoil::rain
-	throw "Not yet implemented";
+void FloodedSoil::rain(CropField* field) {
+ std::cout << "It is raining. Soil is already flooded, no change in state." << std::endl;
 }
 
-std::string FloddedSoil::getName()
-{
-	// TODO - implement FloddedSoil::getName
-	throw "Not yet implemented";
+std::string FloodedSoil::getName() {
+    return "Flooded";
 }
