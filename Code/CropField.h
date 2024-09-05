@@ -6,27 +6,30 @@
 #include"BreadthFirstFarmIterator.h"
 
 #include <string> 
+#include <iostream>
 
-class CropField : FarmUnit
+class CropField : public  FarmUnit
 {
 
+	private:
+		std::string cropType;    
+		int totalCapacity;       
+		int currentStoredCrops;  
+		std::string soilState;
 
-public:
-	int getTotalCapacity();
+	public:
 
-	std::string getCropType();
+		CropField(const std::string& crop, int capacity, const std::string& soil)
+        : cropType(crop), totalCapacity(capacity), currentStoredCrops(0), soilState(soil) {}
 
-	std::string getSoilTypeName();
-
-	void increaseProduction();
-
-	void harvest();
-
-	int getLeftoverCapacity();
-
-	DepthFirstFarmIterator* CreateDepthFirstFarmIterator();
-
-	BreadthFirstFarmIterator* CreateBreadthFirstFarmIterator();
+		int getTotalCapacity();
+		std::string getCropType();
+		std::string getSoilTypeName();
+		void increaseProduction();
+		void harvest();
+		int getLeftoverCapacity();
+		DepthFirstFarmIterator* CreateDepthFirstFarmIterator();
+		BreadthFirstFarmIterator* CreateBreadthFirstFarmIterator();
 };
 
 #endif

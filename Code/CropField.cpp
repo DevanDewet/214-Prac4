@@ -3,50 +3,65 @@
 #include "BreadthFirstFarmIterator.h"
 
 
-int CropField::getTotalCapacity()
+int CropField::getTotalCapacity() 
 {
-	// TODO - implement CropField::getTotalCapacity
-	throw "Not yet implemented";
+	return totalCapacity;
 }
 
-std::string CropField::getCropType()
+std::string CropField::getCropType() 
 {
-	// TODO - implement CropField::getCropType
-	throw "Not yet implemented";
+	return cropType;
 }
 
-std::string CropField::getSoilTypeName()
+std::string CropField::getSoilTypeName() 
 {
-	// TODO - implement CropField::getSoilTypeName
-	throw "Not yet implemented";
+	return soilState;
 }
 
-void CropField::increaseProduction()
+void CropField::increaseProduction()  
 {
-	// TODO - implement CropField::increaseProduction
-	throw "Not yet implemented";
+	if (soilState == "Dry") 
+		{
+				soilState = "Fruitful";  
+				std::cout << "Fertilizer applied. Soil state changed to Fruitful.\n";
+		} 
+		else 
+		{
+            std::cout << "Soil state is already fruitful or flooded, cannot apply fertilizer.\n";
+        }
 }
 
 void CropField::harvest()
 {
-	// TODO - implement CropField::harvest
-	throw "Not yet implemented";
+	if (soilState == "Fruitful") 
+	{
+        int harvestedAmount = 3;  
+        currentStoredCrops += harvestedAmount;
+        std::cout << harvestedAmount << " crops harvested from " << cropType << ".\n";
+    } 
+	else if (soilState == "Dry") 
+	{
+        int harvestedAmount = 1;
+        currentStoredCrops += harvestedAmount;
+        std::cout << harvestedAmount << " crops harvested from " << cropType << ".\n";
+    } 
+	else if (soilState == "Flooded") 
+	{
+        std::cout << "Field is flooded. No crops can be harvested.\n";
+    }
 }
 
 int CropField::getLeftoverCapacity()
 {
-	// TODO - implement CropField::getLeftoverCapacity
-	throw "Not yet implemented";
+	return totalCapacity - currentStoredCrops;
 }
 
 DepthFirstFarmIterator* CropField::CreateDepthFirstFarmIterator()
 {
-	// TODO - implement CropField::CreateDepthFirstFarmIterator
-	throw "Not yet implemented";
+	return new DepthFirstFarmIterator(); // just put this here to get erros away 
 }
 
 BreadthFirstFarmIterator* CropField::CreateBreadthFirstFarmIterator()
 {
-	// TODO - implement CropField::CreateBreadthFirstFarmIterator
-	throw "Not yet implemented";
+	 return new BreadthFirstFarmIterator(); // just put this here to get erros away
 }
