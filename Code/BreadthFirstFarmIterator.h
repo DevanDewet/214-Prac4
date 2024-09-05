@@ -3,7 +3,7 @@
 
 #include "FarmIterator.h"
 
-class BreadthFirstFarmIterator : FarmIterator
+class BreadthFirstFarmIterator : public FarmIterator
 {
 };
 

@@ -1,8 +1,11 @@
 #ifndef DEPTHFIRSTFARMITERATOR_H
 #define DEPTHFIRSTFARMITERATOR_H
 
-class DepthFirstFarmIterator : FarmIterator
+#include "FarmIterator.h"
+
+class DepthFirstFarmIterator : public FarmIterator
 {
+
 };
 
 #endif
