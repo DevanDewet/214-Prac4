@@ -1,11 +1,13 @@
 #ifndef DECORATOR_H
 #define DECORATOR_H
 
+#include"FarmUnit.h"
+
 class Decorator : FarmUnit
 {
 
 public:
-	FarmUnit component;
+	//FarmUnit component;
 
 	void increaseProduction();
 

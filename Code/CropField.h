@@ -1,6 +1,9 @@
 #ifndef CROPFIELD_H
 #define CROPFIELD_H
 
+#include"FarmUnit.h"
+#include <string> 
+
 class CropField : FarmUnit
 {
 
@@ -8,9 +11,9 @@ class CropField : FarmUnit
 public:
 	int getTotalCapacity();
 
-	string getCropType();
+	std::string getCropType();
 
-	string getSoilTypeName();
+	std::string getSoilTypeName();
 
 	void increaseProduction();
 

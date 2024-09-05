@@ -12,7 +12,7 @@ void FloddedSoil::rain()
 	throw "Not yet implemented";
 }
 
-string FloddedSoil::getName()
+std::string FloddedSoil::getName()
 {
 	// TODO - implement FloddedSoil::getName
 	throw "Not yet implemented";

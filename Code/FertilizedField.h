@@ -1,6 +1,9 @@
 #ifndef FERTILIZEDFIELD_H
 #define FERTILIZEDFIELD_H
 
+
+#include "Decorator.h"
+
 class FertilizedField : Decorator
 {
 

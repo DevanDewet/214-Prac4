@@ -12,7 +12,7 @@ void DrySoil::rain()
 	throw "Not yet implemented";
 }
 
-string DrySoil::getName()
+std::string DrySoil::getName()
 {
 	// TODO - implement DrySoil::getName
 	throw "Not yet implemented";

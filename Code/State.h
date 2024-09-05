@@ -1,6 +1,11 @@
 #ifndef STATE_H
 #define STATE_H
 
+
+
+#include <string>
+
+
 class State
 {
 
@@ -10,7 +15,7 @@ public:
 
 	virtual void rain() = 0;
 
-	virtual string getName() = 0;
+	virtual std::string getName() = 0;
 };
 
 #endif

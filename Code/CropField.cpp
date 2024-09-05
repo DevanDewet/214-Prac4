@@ -1,4 +1,7 @@
 #include "CropField.h"
+#include "DepthFirstFarmIterator.h"
+#include "BreadthFirstFarmIterator.h"
+
 
 int CropField::getTotalCapacity()
 {
@@ -6,13 +9,13 @@ int CropField::getTotalCapacity()
 	throw "Not yet implemented";
 }
 
-string CropField::getCropType()
+std::string CropField::getCropType()
 {
 	// TODO - implement CropField::getCropType
 	throw "Not yet implemented";
 }
 
-string CropField::getSoilTypeName()
+std::string CropField::getSoilTypeName()
 {
 	// TODO - implement CropField::getSoilTypeName
 	throw "Not yet implemented";

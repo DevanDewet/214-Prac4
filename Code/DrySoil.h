@@ -1,6 +1,9 @@
 #ifndef DRYSOIL_H
 #define DRYSOIL_H
 
+#include <string> 
+#include "State.h"
+
 class DrySoil : State
 {
 
@@ -10,7 +13,7 @@ public:
 
 	void rain();
 
-	string getName();
+	std::string getName();
 };
 
 #endif

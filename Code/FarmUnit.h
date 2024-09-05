@@ -1,6 +1,9 @@
 #ifndef FARMUNIT_H
 #define FARMUNIT_H
 
+#include <string> 
+
+
 class FarmUnit
 {
 
@@ -14,9 +17,9 @@ public:
 
 	virtual int getTotalCapacity() = 0;
 
-	virtual string getCropType() = 0;
+	virtual std::string getCropType() = 0;
 
-	virtual string getSoilTypeName() = 0;
+	virtual std::string getSoilTypeName() = 0;
 
 	void increaseProduction();
 

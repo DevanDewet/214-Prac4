@@ -1,6 +1,10 @@
 #ifndef FRUITFULSOIL_H
 #define FRUITFULSOIL_H
 
+
+#include <string>
+#include "State.h"
+
 class FruitfulSoil : State
 {
 
@@ -10,7 +14,7 @@ public:
 
 	void rain();
 
-	string getName();
+	std::string getName();
 };
 
 #endif

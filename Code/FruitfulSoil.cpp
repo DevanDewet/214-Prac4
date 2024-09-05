@@ -12,7 +12,7 @@ void FruitfulSoil::rain()
 	throw "Not yet implemented";
 }
 
-string FruitfulSoil::getName()
+std::string FruitfulSoil::getName()
 {
 	// TODO - implement FruitfulSoil::getName
 	throw "Not yet implemented";
