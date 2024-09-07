@@ -155,6 +155,7 @@ void TestDecoratorPattern() {
     std::cout << "Total Capacity: " << field->getTotalCapacity() << "\n";
     std::cout << "Leftover Capacity: " << field->getLeftoverCapacity() << "\n";
 
+    std::cout << std::endl;
     // Apply Fertilizer
     FertilizedField* fertilizedField = new FertilizedField(field);
     fertilizedField->increaseProduction();
@@ -163,11 +164,13 @@ void TestDecoratorPattern() {
     std::cout << "Soil State: " << fertilizedField->getSoilTypeName() << "\n";
     std::cout << "Leftover Capacity: " << fertilizedField->getLeftoverCapacity() << "\n";
 
+    std::cout << std::endl;
     // Add Extra Barn
     ExtraBarn* extraBarn = new ExtraBarn(fertilizedField, 50);
     printSubHeader("After Adding Extra Barn");
     std::cout << "Leftover Capacity: " << extraBarn->getLeftoverCapacity() << "\n";
 
+    std::cout << std::endl;
     // Clean up
     delete extraBarn;
     delete fertilizedField;
