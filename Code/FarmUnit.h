@@ -5,11 +5,16 @@
 #include "TruckInterface.h"
 #include "FertilizeTruck.h"
 #include "DeliveryTruck.h"
+#include "FarmIterator.h"
+#include <vector>
+
 
 class FarmUnit {
 protected:
     FertilizeTruck* fertilizeTruck;  // Pointer to the fertilize truck
     DeliveryTruck* deliveryTruck;    // Pointer to the delivery truck
+    std::vector<FarmUnit*> connectedFarms;
+
 
 public:
     FarmUnit();

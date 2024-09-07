@@ -16,9 +16,14 @@ private:
     int currentStoredCrops;  
     State* soilState;       
 	int yield;
+
+    std::vector<FarmUnit*> connectedFarms;
+
 public:
    
-     CropField(const std::string& crop, int capacity, State* initialSoilState) : cropType(crop), totalCapacity(capacity), currentStoredCrops(0), soilState(initialSoilState), yield(0) {}
+     CropField(const std::string& crop, int capacity, State* initialSoilState) : cropType(crop), totalCapacity(capacity), currentStoredCrops(0), soilState(initialSoilState), yield(0) {
+            soilState = initialSoilState->clone();
+     }
 	
 	~CropField() {
         delete soilState;
@@ -42,6 +47,10 @@ public:
 
     DepthFirstFarmIterator* CreateDepthFirstFarmIterator();
     BreadthFirstFarmIterator* CreateBreadthFirstFarmIterator();
+    FarmIterator* createDepthFirstIterator();
+    FarmIterator* createBreadthFirstIterator();
+
+    void addConnectedFarm(FarmUnit* farm);
 };
 
 #endif

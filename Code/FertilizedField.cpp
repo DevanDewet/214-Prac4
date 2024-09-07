@@ -1,18 +1,22 @@
 #include "FertilizedField.h"
+#include "FarmIterator.h"
+#include "BreadthFirstFarmIterator.h"
+#include "DepthFirstFarmIterator.h"
+#include "CropField.h"
 #include <iostream>
 
 void FertilizedField::increaseProduction() {
-    // Implement logic to increase production
+    Decorator::increaseProduction();
 }
 
 void FertilizedField::harvest() {
-    // Implement logic to harvest with enhanced soil state
+    Decorator::harvest();
 }
 
 int FertilizedField::getLeftoverCapacity() {
-    return decoratedUnit->getLeftoverCapacity();  // Use base functionality or adjust as needed
+    return Decorator::getLeftoverCapacity() + additionalCapacity;  
 }
 
 std::string FertilizedField::getSoilTypeName() {
-    return "Fertilized Soil";  // Or use some logic to get the name
+    return "Fertilized Soil";  
 }

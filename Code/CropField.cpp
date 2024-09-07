@@ -67,3 +67,15 @@ void CropField::checkSoilState() {
 void CropField::notifyTruck(const std::string& truckType) {
     callTruck(truckType); // Calls the appropriate truck based on state
 }
+
+FarmIterator* CropField::createDepthFirstIterator() {
+    return new DepthFirstFarmIterator(connectedFarms);
+}
+
+FarmIterator* CropField::createBreadthFirstIterator() {
+    return new BreadthFirstFarmIterator(connectedFarms);
+}
+
+void CropField::addConnectedFarm(FarmUnit* farm) {
+    connectedFarms.push_back(farm);
+}

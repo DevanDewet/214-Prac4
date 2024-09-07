@@ -2,8 +2,13 @@
 #define FERTILIZEDFIELD_H
 
 #include "Decorator.h"
+#include "FarmIterator.h"
 
 class FertilizedField : public Decorator {
+
+private:    
+        int additionalCapacity;
+
 public:
     FertilizedField(FarmUnit* unit) : Decorator(unit) {}
 

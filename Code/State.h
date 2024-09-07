@@ -14,6 +14,8 @@ public:
     virtual void harvestCrops(CropField* field) = 0;
     virtual void rain(CropField* field) = 0;
     virtual std::string getName() = 0;
+    virtual State* clone() const = 0; 
+
 };
 
 #endif

@@ -9,6 +9,8 @@
 #include "ExtraBarn.h"
 #include "Decorator.h"
 #include "FarmUnit.h"
+#include "DepthFirstFarmIterator.h"
+#include "BreadthFirstFarmIterator.h"
 
 void Decorator::increaseProduction() {
     decoratedUnit->increaseProduction();
@@ -21,7 +23,6 @@ void Decorator::harvest() {
 int Decorator::getLeftoverCapacity() {
     return decoratedUnit->getLeftoverCapacity();
 }
-
 
 void printHeader(const std::string& title) {
     std::cout << "\033[1;34m" << "============================" << std::endl;
@@ -177,10 +178,53 @@ void TestDecoratorPattern() {
     delete field;
 }
 
-int main() {
+void TestIterators() {
+    // Create soil state (dummy)
+    State* fruitfulSoil = new FruitfulSoil();
 
+    // Create some crop fields
+    CropField* farm1 = new CropField("Wheat", 100, fruitfulSoil);
+    CropField* farm2 = new CropField("Corn", 120, fruitfulSoil);
+    CropField* farm3 = new CropField("Rice", 110, fruitfulSoil);
+
+    // Add connections between farms
+    farm1->addConnectedFarm(farm2);
+    farm1->addConnectedFarm(farm3);
+
+    printHeader("Iterator Pattern Testing");
+
+    // Depth-First Traversal
+    printSubHeader("Depth-First Traversal");
+    FarmIterator* depthFirstIter = farm1->createDepthFirstIterator();
+    for (depthFirstIter->firstFarm(); !depthFirstIter->isDone(); depthFirstIter->next()) {
+        if (depthFirstIter->currentFarm() != NULL) {
+            std::cout << "Farm: " << depthFirstIter->currentFarm()->getCropType() << "\n";
+        }
+    }
+    delete depthFirstIter;
+
+    // Breadth-First Traversal
+    printSubHeader("Breadth-First Traversal");
+    FarmIterator* breadthFirstIter = farm1->createBreadthFirstIterator();
+    for (breadthFirstIter->firstFarm(); !breadthFirstIter->isDone(); breadthFirstIter->next()) {
+        if (breadthFirstIter->currentFarm() != NULL) {
+            std::cout << "Farm: " << breadthFirstIter->currentFarm()->getCropType() << "\n";
+        }
+    }
+    delete breadthFirstIter;
+
+    // Clean up
+    delete farm1;
+    delete farm2;
+    delete farm3;
+    delete fruitfulSoil;
+}
+
+int main() {
     TestCompositeAndState();
     TestObserverPattern();
     TestDecoratorPattern();
-}
+    TestIterators();
 
+    return 0;
+}

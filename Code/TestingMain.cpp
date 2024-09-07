@@ -155,10 +155,51 @@ void Test3() {
     delete field;
 }
 
+void Test4() {
+    // Create soil state (dummy)
+    State* fruitfulSoil = new FruitfulSoil();
+
+    // Create some crop fields
+    CropField* farm1 = new CropField("Wheat", 100, fruitfulSoil);
+    CropField* farm2 = new CropField("Corn", 120, fruitfulSoil);
+    CropField* farm3 = new CropField("Rice", 110, fruitfulSoil);
+
+    // Add connections between farms
+    farm1->addConnectedFarm(farm2);
+    farm1->addConnectedFarm(farm3);
+
+    // Depth-First Traversal
+    FarmIterator* depthFirstIter = farm1->createDepthFirstIterator();
+    std::cout << "Depth-First Traversal:\n";
+    for (depthFirstIter->firstFarm(); !depthFirstIter->isDone(); depthFirstIter->next()) {
+        if (depthFirstIter->currentFarm() != NULL) {
+            std::cout << "Farm: " << depthFirstIter->currentFarm()->getCropType() << "\n";
+        }
+    }
+    delete depthFirstIter;
+
+    // Breadth-First Traversal
+    FarmIterator* breadthFirstIter = farm1->createBreadthFirstIterator();
+    std::cout << "\nBreadth-First Traversal:\n";
+    for (breadthFirstIter->firstFarm(); !breadthFirstIter->isDone(); breadthFirstIter->next()) {
+        if (breadthFirstIter->currentFarm() != NULL) {
+            std::cout << "Farm: " << breadthFirstIter->currentFarm()->getCropType() << "\n";
+        }
+    }
+    delete breadthFirstIter;
+
+    // Clean up
+    delete farm1;
+    delete farm2;
+    delete farm3;
+    delete fruitfulSoil;
+}
+
 int Main() {
 
     Test1();
     Test2();
     Test3();
+    Test4();
 }
 
