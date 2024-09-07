@@ -4,7 +4,6 @@
 #include <string>
 #include "State.h"
 
-// Forward declaration of CropField class
 class CropField;
 
 class DrySoil : public State {

@@ -1,6 +1,13 @@
 #include "FarmUnit.h"
 
- void callTruck() {
-        std::cout << "Calling truck to the farm unit...\n";
-        // This can be expanded later based on truck types
-    }
+void FarmUnit::buyTruck() {
+    std::cout << "Truck has been purchased for the farm.\n";
+}
+
+void FarmUnit::sellTruck() {
+    std::cout << "Truck has been sold from the farm.\n";
+}
+
+void FarmUnit::callTruck() {
+    std::cout << "Calling a truck to the farm unit.\n";
+}

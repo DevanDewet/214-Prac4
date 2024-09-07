@@ -1,77 +1,51 @@
 #include "CropField.h"
 
 // Getters
-int CropField::getTotalCapacity() 
-{
+int CropField::getTotalCapacity() {
     return totalCapacity;
 }
 
-std::string CropField::getCropType() 
-{
+std::string CropField::getCropType() {
     return cropType;
 }
 
-std::string CropField::getSoilTypeName() 
-{
-    return soilState->getName();  
+std::string CropField::getSoilTypeName() {
+    return soilState->getName();
 }
 
-void CropField::increaseProduction() 
-{
-
-
+void CropField::increaseProduction() {
     std::cout << "Increasing production based on soil state: " << soilState->getName() << "\n";
 }
 
-void CropField::harvest() 
-{
-     soilState->harvestCrops(this);  
-	
-	 currentStoredCrops += yield;
+void CropField::harvest() {
+    soilState->harvestCrops(this);  
+    currentStoredCrops += yield;
 }
 
-int CropField::getLeftoverCapacity() 
-{
-
+int CropField::getLeftoverCapacity() {
     return totalCapacity - currentStoredCrops;
 }
 
-
-void CropField::setState(State* state) 
-{
-   delete soilState;
+void CropField::setState(State* state) {
+    // Manage previous state memory safely
+    if (soilState) {
+        delete soilState;
+    }
     soilState = state;
 }
 
-
-void CropField::rain() 
-{
-    soilState->rain(this); 
+void CropField::rain() {
+    soilState->rain(this);
 }
 
-std::string CropField::getSoilStateName() 
-{
-    return soilState->getName(); 
+std::string CropField::getSoilStateName() {
+    return soilState->getName();
 }
 
-int CropField::getYield() 
-{
-    return yield; 
+int CropField::getYield() {
+    return yield;
 }
 
-void CropField::setYield(int yield) 
-{
-     yield = yield;
-}
-
-DepthFirstFarmIterator* CropField::CreateDepthFirstFarmIterator() 
-{
-    // Implement as needed
-    return nullptr;
-}
-
-BreadthFirstFarmIterator* CropField::CreateBreadthFirstFarmIterator() 
-{
-    // Implement as needed
-    return nullptr;
+void CropField::setYield(int newYield) {
+    yield = newYield;
 }

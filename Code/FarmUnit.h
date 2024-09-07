@@ -7,7 +7,6 @@
 class FarmUnit
 {
 
-
 public:
 
  	virtual void buyTruck() ;

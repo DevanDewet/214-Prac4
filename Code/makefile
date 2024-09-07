@@ -4,7 +4,7 @@ CXXFLAGS = -std=c++11
 
 # Object files
 ofiles = Main.o \
-         Barn.o ExtraBarn.o CropField.o FertilizedField.o FloddedSoil.o FruitfulSoil.o DrySoil.o \
+         Barn.o ExtraBarn.o CropField.o FertilizedField.o FloodedSoil.o FruitfulSoil.o DrySoil.o \
          FarmUnit.o Decorator.o DeliveryTruck.o FertilizeTruck.o \
          BreadthFirstFarmIterator.o DepthFirstFarmIterator.o
 
@@ -14,7 +14,7 @@ main: $(ofiles)
 	chmod +x main  # Add execute permission
 
 # Rules for generating object files
-Main.o: Main.cpp Barn.h ExtraBarn.h CropField.h FertilizedField.h FloddedSoil.h FruitfulSoil.h DrySoil.h \
+Main.o: Main.cpp Barn.h ExtraBarn.h CropField.h FertilizedField.h FloodedSoil.h FruitfulSoil.h DrySoil.h \
          FarmUnit.h Decorator.h DeliveryTruck.h FertilizeTruck.h \
          BreadthFirstFarmIterator.h DepthFirstFarmIterator.h
 	$(CXX) $(CXXFLAGS) -c Main.cpp -o Main.o
@@ -31,8 +31,8 @@ CropField.o: CropField.cpp CropField.h
 FertilizedField.o: FertilizedField.cpp FertilizedField.h
 	$(CXX) $(CXXFLAGS) -c FertilizedField.cpp -o FertilizedField.o
 
-FloddedSoil.o: FloddedSoil.cpp FloddedSoil.h
-	$(CXX) $(CXXFLAGS) -c FloddedSoil.cpp -o FloddedSoil.o
+FloodedSoil.o: FloodedSoil.cpp FloodedSoil.h
+	$(CXX) $(CXXFLAGS) -c FloodedSoil.cpp -o FloodedSoil.o
 
 FruitfulSoil.o: FruitfulSoil.cpp FruitfulSoil.h
 	$(CXX) $(CXXFLAGS) -c FruitfulSoil.cpp -o FruitfulSoil.o

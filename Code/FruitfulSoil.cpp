@@ -1,5 +1,5 @@
 #include "FruitfulSoil.h"
-#include "CropField.h" // To access CropField methods if needed
+#include "CropField.h" 
 
 void FruitfulSoil::harvestCrops(CropField* field) 
 {

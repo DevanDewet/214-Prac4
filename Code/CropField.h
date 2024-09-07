@@ -18,8 +18,7 @@ private:
 	int yield;
 public:
    
-     CropField(const std::string& crop, int capacity, State* initialSoilState) 
-        : cropType(crop), totalCapacity(capacity), currentStoredCrops(0), soilState(initialSoilState), yield(0) {}
+     CropField(const std::string& crop, int capacity, State* initialSoilState) : cropType(crop), totalCapacity(capacity), currentStoredCrops(0), soilState(initialSoilState), yield(0) {}
 	
 	~CropField() {
         delete soilState;
