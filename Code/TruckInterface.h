@@ -1,12 +1,10 @@
 #ifndef TRUCKINTERFACE_H
 #define TRUCKINTERFACE_H
 
-class TruckInterface
-{
-
-
+class TruckInterface {
 public:
-	virtual void startEngine() = 0;
+    virtual void startEngine() = 0;
+    virtual ~TruckInterface() {}
 };
 
 #endif

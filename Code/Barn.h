@@ -14,9 +14,9 @@ public:
     Barn(int storageCapacity, int trucksAvailable);
 
     // Implementing FarmUnit methods
-    void buyTruck() override;
+    void buyTruck();
 
-    void sellTruck() override;
+    void sellTruck();
 
     int getTotalCapacity() override;
 

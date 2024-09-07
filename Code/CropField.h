@@ -36,6 +36,10 @@ public:
 	int getYield(); 
     void setYield(int yield);
 
+    void checkCapacity() override;
+    void checkSoilState() override;
+    void notifyTruck(const std::string& truckType) override;
+
     DepthFirstFarmIterator* CreateDepthFirstFarmIterator();
     BreadthFirstFarmIterator* CreateBreadthFirstFarmIterator();
 };

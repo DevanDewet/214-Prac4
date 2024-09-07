@@ -1,7 +1,6 @@
 #include "DeliveryTruck.h"
+#include <iostream>
 
-void DeliveryTruck::startEngine()
-{
-	// TODO - implement DeliveryTruck::startEngine
-	throw "Not yet implemented";
+void DeliveryTruck::startEngine() {
+    std::cout << "Delivery truck engine started. Collecting crops.\n";
 }

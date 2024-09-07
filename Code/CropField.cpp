@@ -49,3 +49,21 @@ int CropField::getYield() {
 void CropField::setYield(int newYield) {
     yield = newYield;
 }
+
+void CropField::checkCapacity() {
+    if (getLeftoverCapacity() <= 20) {
+        std::cout << "Storage nearing capacity for crop field: " << getCropType() << ". Notifying delivery truck.\n";
+        notifyTruck("Delivery");
+    }
+}
+
+void CropField::checkSoilState() {
+    if (soilState->getName() == "Dry") {
+        std::cout << "Soil is dry for crop field: " << getCropType() << ". Notifying fertilize truck.\n";
+        notifyTruck("Fertilize");
+    }
+}
+
+void CropField::notifyTruck(const std::string& truckType) {
+    callTruck(truckType); // Calls the appropriate truck based on state
+}
