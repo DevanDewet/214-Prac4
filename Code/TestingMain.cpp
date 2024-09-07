@@ -10,15 +10,6 @@
 #include "Decorator.h"
 #include "FarmUnit.h"
 
-void Decorator::increaseProduction() {
-    decoratedUnit->increaseProduction();
-}
-
-void Decorator::harvest() {
-    decoratedUnit->harvest();
-}
-
-
 
 void Test1() {
     State* drySoil = new DrySoil();
@@ -164,7 +155,7 @@ void Test3() {
     delete field;
 }
 
-int main() {
+int Main() {
 
     Test1();
     Test2();
