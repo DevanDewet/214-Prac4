@@ -1,13 +1,12 @@
 #include "Decorator.h"
-
-void Decorator::increaseProduction()
-{
-	// TODO - implement Decorator::increaseProduction
-	throw "Not yet implemented";
+void Decorator::checkCapacity() {
+    decoratedUnit->checkCapacity();
 }
 
-int Decorator::getLeftoverCapacity()
-{
-	// TODO - implement Decorator::getLeftoverCapacity
-	throw "Not yet implemented";
+void Decorator::checkSoilState() {
+    decoratedUnit->checkSoilState();
+}
+
+void Decorator::notifyTruck(const std::string& truckType) {
+    decoratedUnit->notifyTruck(truckType);
 }

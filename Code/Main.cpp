@@ -5,6 +5,22 @@
 #include "DrySoil.h"
 #include "FruitfulSoil.h"
 #include "FloodedSoil.h"
+#include "FertilizedField.h"
+#include "ExtraBarn.h"
+#include "Decorator.h"
+#include "FarmUnit.h"
+
+void Decorator::increaseProduction() {
+    decoratedUnit->increaseProduction();
+}
+
+void Decorator::harvest() {
+    decoratedUnit->harvest();
+}
+
+int Decorator::getLeftoverCapacity() {
+    return decoratedUnit->getLeftoverCapacity();
+}
 
 
 void printHeader(const std::string& title) {
@@ -128,9 +144,40 @@ void TestObserverPattern() {
     delete cornField;
 }
 
+void TestDecoratorPattern() {
+    CropField* field = new CropField("Wheat", 50, new DrySoil());
+
+    printHeader("Decorator Pattern Testing");
+
+    printSubHeader("Initial CropField State");
+    std::cout << "Crop Type: " << field->getCropType() << "\n";
+    std::cout << "Soil State: " << field->getSoilTypeName() << "\n";
+    std::cout << "Total Capacity: " << field->getTotalCapacity() << "\n";
+    std::cout << "Leftover Capacity: " << field->getLeftoverCapacity() << "\n";
+
+    // Apply Fertilizer
+    FertilizedField* fertilizedField = new FertilizedField(field);
+    fertilizedField->increaseProduction();
+    fertilizedField->harvest();
+    printSubHeader("After Fertilization");
+    std::cout << "Soil State: " << fertilizedField->getSoilTypeName() << "\n";
+    std::cout << "Leftover Capacity: " << fertilizedField->getLeftoverCapacity() << "\n";
+
+    // Add Extra Barn
+    ExtraBarn* extraBarn = new ExtraBarn(fertilizedField, 50);
+    printSubHeader("After Adding Extra Barn");
+    std::cout << "Leftover Capacity: " << extraBarn->getLeftoverCapacity() << "\n";
+
+    // Clean up
+    delete extraBarn;
+    delete fertilizedField;
+    delete field;
+}
+
 int main() {
 
     TestCompositeAndState();
     TestObserverPattern();
+    TestDecoratorPattern();
 }
 

@@ -1,19 +1,18 @@
 #include "FertilizedField.h"
+#include <iostream>
 
-void FertilizedField::increaseProduction2()
-{
-	// TODO - implement FertilizedField::increaseProduction2
-	throw "Not yet implemented";
+void FertilizedField::increaseProduction() {
+    // Implement logic to increase production
 }
 
-void FertilizedField::harvest2()
-{
-	// TODO - implement FertilizedField::harvest2
-	throw "Not yet implemented";
+void FertilizedField::harvest() {
+    // Implement logic to harvest with enhanced soil state
 }
 
-int FertilizedField::getLeftoverCapacity2()
-{
-	// TODO - implement FertilizedField::getLeftoverCapacity2
-	throw "Not yet implemented";
+int FertilizedField::getLeftoverCapacity() {
+    return decoratedUnit->getLeftoverCapacity();  // Use base functionality or adjust as needed
+}
+
+std::string FertilizedField::getSoilTypeName() {
+    return "Fertilized Soil";  // Or use some logic to get the name
 }

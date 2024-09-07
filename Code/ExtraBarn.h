@@ -3,8 +3,18 @@
 
 #include "Decorator.h"
 
-class ExtraBarn : Decorator
-{
+class ExtraBarn : public Decorator {
+
+private:
+
+    int additionalCapacity;
+    
+public:
+     ExtraBarn(FarmUnit* unit, int capacity) : Decorator(unit), additionalCapacity(capacity) {}
+
+    void increaseProduction() override;
+    void harvest() override;
+    int getLeftoverCapacity() override;
 };
 
 #endif

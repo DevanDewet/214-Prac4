@@ -1,19 +1,16 @@
 #ifndef FERTILIZEDFIELD_H
 #define FERTILIZEDFIELD_H
 
-
 #include "Decorator.h"
 
-class FertilizedField : Decorator
-{
-
-
+class FertilizedField : public Decorator {
 public:
-	void increaseProduction2();
+    FertilizedField(FarmUnit* unit) : Decorator(unit) {}
 
-	void harvest2();
-
-	int getLeftoverCapacity2();
+    void increaseProduction() override;
+    void harvest() override;
+    int getLeftoverCapacity() override;
+    std::string getSoilTypeName();
 };
 
 #endif
