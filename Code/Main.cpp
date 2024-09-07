@@ -6,8 +6,18 @@
 #include "FruitfulSoil.h"
 #include "FloodedSoil.h"
 
-void Test1() {
 
+void printHeader(const std::string& title) {
+    std::cout << "\033[1;34m" << "============================" << std::endl;
+    std::cout << title << std::endl;
+    std::cout << "============================" << "\033[0m" << std::endl;
+}
+
+void printSubHeader(const std::string& subtitle) {
+    std::cout << "\033[1;33m" << subtitle << "\033[0m" << std::endl;
+}
+
+void TestCompositeAndState() {
     State* drySoil = new DrySoil();
     State* fruitfulSoil = new FruitfulSoil();
     State* floodedSoil = new FloodedSoil();
@@ -20,8 +30,10 @@ void Test1() {
     field2->setYield(30);
     field3->setYield(20);
 
-      // Show initial states and actions
-    std::cout << "Crop Field 1 (Dry Soil):" << std::endl;
+    printHeader("Composite and State Testing");
+
+    // Show initial states and actions
+    printSubHeader("Crop Field 1 (Dry Soil)");
     std::cout << "Crop Type: " << field1->getCropType() << std::endl;
     std::cout << "Total Capacity: " << field1->getTotalCapacity() << std::endl;
     std::cout << "Soil State: " << field1->getSoilStateName() << std::endl;
@@ -30,7 +42,9 @@ void Test1() {
     field1->harvest();
     std::cout << "After Harvest - Leftover Capacity: " << field1->getLeftoverCapacity() << std::endl;
 
-    std::cout << "\nCrop Field 2 (Fruitful Soil):" << std::endl;
+    std::cout << std::endl;
+
+    printSubHeader("Crop Field 2 (Fruitful Soil)");
     std::cout << "Crop Type: " << field2->getCropType() << std::endl;
     std::cout << "Total Capacity: " << field2->getTotalCapacity() << std::endl;
     std::cout << "Soil State: " << field2->getSoilStateName() << std::endl;
@@ -39,7 +53,9 @@ void Test1() {
     field2->harvest();
     std::cout << "After Harvest - Leftover Capacity: " << field2->getLeftoverCapacity() << std::endl;
 
-    std::cout << "\nCrop Field 3 (Flooded Soil):" << std::endl;
+    std::cout << std::endl;
+
+    printSubHeader("Crop Field 3 (Flooded Soil)");
     std::cout << "Crop Type: " << field3->getCropType() << std::endl;
     std::cout << "Total Capacity: " << field3->getTotalCapacity() << std::endl;
     std::cout << "Soil State: " << field3->getSoilStateName() << std::endl;
@@ -47,12 +63,12 @@ void Test1() {
     std::cout << "After Rain - Soil State: " << field3->getSoilStateName() << std::endl;
     field3->harvest();  // Shouldn't affect due to Flooded Soil
     std::cout << "After Harvest - Leftover Capacity: " << field3->getLeftoverCapacity() << std::endl;
+    std::cout << std::endl;
 
     // Clean up
     delete field1;
     delete field2;
     delete field3;
-
 }
 
 void TestObserverPattern() {
@@ -64,24 +80,29 @@ void TestObserverPattern() {
     CropField* wheatField = new CropField("Wheat", 100, drySoil);
     CropField* cornField = new CropField("Corn", 150, fruitfulSoil);
 
+    printHeader("Observer Pattern Testing");
+
     // Buying trucks
-    std::cout << "Testing buying trucks...\n";
+    printSubHeader("Buying Trucks");
     wheatField->buyTruck("Fertilize");
     wheatField->buyTruck("Delivery");
 
     cornField->buyTruck("Fertilize");
     cornField->buyTruck("Delivery");
 
+    std::cout << std::endl;
     // Simulating soil drying out
-    std::cout << "\nTesting fertilize truck dispatch due to dry soil...\n";
+    printSubHeader("Fertilize Truck Dispatch Due to Dry Soil");
     wheatField->rain();  // Transitioning to Fruitful soil (simulate rain)
     wheatField->checkSoilState();  // Should not dispatch FertilizeTruck
 
     wheatField->setState(new DrySoil());  // Manually setting to dry soil again
     wheatField->checkSoilState();  // Should dispatch FertilizeTruck
 
+    std::cout << std::endl;
+
     // Harvesting crop and checking delivery truck
-    std::cout << "\nTesting delivery truck dispatch due to nearing capacity...\n";
+    printSubHeader("Delivery Truck Dispatch Due to Nearing Capacity");
     wheatField->setYield(90);  // Assume 90 units of crops harvested
     wheatField->harvest();     // Field's stored crops will now be at 90
     wheatField->checkCapacity();  // Should not dispatch DeliveryTruck (still below limit)
@@ -90,13 +111,15 @@ void TestObserverPattern() {
     wheatField->harvest();     // Exceeding the field's capacity
     wheatField->checkCapacity();  // Should dispatch DeliveryTruck
 
+    std::cout << std::endl;
     // Selling trucks
-    std::cout << "\nTesting selling trucks...\n";
+    printSubHeader("Selling Trucks");
     wheatField->sellTruck("Fertilize");
     wheatField->sellTruck("Delivery");
 
+    std::cout << std::endl;
     // Trying to call trucks after they were sold (should not start trucks)
-    std::cout << "\nTesting calling trucks after selling...\n";
+    printSubHeader("Calling Trucks After Selling");
     wheatField->callTruck("Fertilize");
     wheatField->callTruck("Delivery");
 
@@ -107,7 +130,7 @@ void TestObserverPattern() {
 
 int main() {
 
-    Test1();
+    TestCompositeAndState();
     TestObserverPattern();
 }
 
