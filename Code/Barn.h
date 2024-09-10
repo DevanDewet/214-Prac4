@@ -13,10 +13,6 @@ public:
     // Constructor
     Barn(int storageCapacity, int trucksAvailable);
 
-    // Implementing FarmUnit methods
-    void buyTruck();
-
-    void sellTruck();
 
     int getTotalCapacity() override;
 

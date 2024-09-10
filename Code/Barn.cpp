@@ -6,24 +6,7 @@ Barn::Barn(int storageCapacity, int trucksAvailable)
     : storageCapacity(storageCapacity), trucksAvailable(trucksAvailable) {}
 
 
-void Barn::buyTruck() 
-{
-    trucksAvailable++;
-    std::cout << "Truck purchased! Total trucks available: " << trucksAvailable << "\n";
-}
 
-void Barn::sellTruck() {
-
-    if (trucksAvailable > 0) 
-    {
-        trucksAvailable--;
-        std::cout << "Truck sold! Total trucks available: " << trucksAvailable << "\n";
-    } 
-    else 
-    {
-        std::cout << "No trucks available to sell!\n";
-    }
-}
 
 int Barn::getTotalCapacity() 
 {

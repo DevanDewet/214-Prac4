@@ -225,6 +225,4 @@ int main() {
     TestObserverPattern();
     TestDecoratorPattern();
     TestIterators();
-
-    return 0;
 }

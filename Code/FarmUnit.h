@@ -37,6 +37,14 @@ public:
     virtual void checkCapacity() = 0;
     virtual void checkSoilState() = 0;
     virtual void notifyTruck(const std::string& truckType) = 0;
+
+     virtual void addFarmUnit(FarmUnit* unit) {
+       
+    }
+
+    virtual void removeFarmUnit(FarmUnit* unit) {
+       
+    }
 };
 
 #endif
